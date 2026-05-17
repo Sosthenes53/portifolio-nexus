@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="NEXUS CLIN — Reposição Hormonal Masculina e Feminina. Avaliação clínica individualizada em Livramento, PB."/>
+<title>NEXUS CLIN — Reposição Hormonal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --cream:#F3EDE2;--cream-2:#EDE5D8;--cream-3:#DDD4C5;
+  --navy:#1B3050;--navy-2:#243B5E;
+  --teal:#2E8C8A;--teal-2:#3AA8A5;--teal-light:#7FCFCC;--teal-pale:#C2E8E7;--teal-wash:#EAF6F6;
+  --gold:#B5892A;--gold-2:#CFA93E;--gold-pale:#FBF3DC;
+  --text:#2A2A2A;--text-mid:#4A5568;--text-soft:#7A8B99;
+  --border:rgba(46,140,138,0.18);--shadow:0 4px 32px rgba(27,48,80,0.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(27,48,80,0.97);backdrop-filter:blur(12px);padding:0 80px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(46,140,138,0.2);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:0.18em;color:var(--cream);}
+.nav-links{display:flex;gap:32px;align-items:center;}
+.nav-links a{font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--teal-light);}
+.nav-cta{background:var(--teal);color:white!important;padding:8px 20px!important;}
+.nav-cta:hover{background:var(--teal-2)!important;}
+
+.page-hero{padding:140px 80px 80px;background:var(--navy);position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;right:-120px;top:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(46,140,138,0.15) 0%,transparent 65%);pointer-events:none;}
+.page-hero::after{content:'';position:absolute;left:0;bottom:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,58px);font-weight:400;line-height:1.08;color:white;margin-bottom:20px;}
+.page-hero h1 em{font-style:italic;color:var(--teal-light);}
+.page-hero p{font-size:15px;color:rgba(255,255,255,0.5);max-width:560px;line-height:1.85;}
+
+/* AVISO LEGAL */
+.legal-bar{
+  background:#FFF8E6;
+  border-left:4px solid var(--gold);
+  padding:20px 80px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.legal-bar-icon{font-size:18px;flex-shrink:0;margin-top:2px;}
+.legal-bar-text{font-size:12px;color:#5A4010;line-height:1.75;}
+.legal-bar-text strong{font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:4px;}
+
+.section{padding:80px;}
+.section.white{background:#fff;}
+.section.cream{background:var(--cream);}
+.container{max-width:1100px;margin:0 auto;}
+.divider{width:100%;height:1px;background:var(--border);}
+
+.s-label{font-size:9px;font-weight:600;letter-spacing:0.45em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;gap:12px;}
+.s-label::after{content:'';flex:0 0 36px;height:1px;background:var(--teal-light);}
+.s-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,46px);font-weight:400;line-height:1.1;color:var(--navy);margin-bottom:16px;}
+.s-title em{font-style:italic;color:var(--teal);}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* AVALIAÇÃO BLOCO */
+.av-bloco{background:var(--navy);padding:56px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;overflow:hidden;}
+.av-bloco::before{content:'';position:absolute;right:-100px;top:-100px;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(46,140,138,0.12) 0%,transparent 65%);pointer-events:none;}
+.av-bloco::after{content:'';position:absolute;left:0;bottom:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.avb-badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:9px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;padding:5px 14px;margin-bottom:18px;}
+.avb-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:400;color:white;line-height:1.1;margin-bottom:16px;}
+.avb-title em{font-style:italic;color:var(--teal-light);}
+.avb-desc{font-size:14px;color:rgba(255,255,255,0.55);line-height:1.85;}
+.avb-includes{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.avb-includes li{font-size:13px;color:rgba(255,255,255,0.6);padding-left:18px;position:relative;line-height:1.5;}
+.avb-includes li::before{content:'✓';position:absolute;left:0;color:var(--teal-light);font-size:12px;}
+.avb-price-side{text-align:center;}
+.avb-price-val{font-family:'Playfair Display',serif;font-size:72px;font-weight:400;color:white;line-height:1;}
+.avb-price-lbl{font-size:10px;letter-spacing:0.32em;text-transform:uppercase;color:var(--teal-light);margin-top:6px;}
+.avb-cta{display:inline-block;margin-top:24px;padding:16px 36px;background:var(--gold);color:var(--navy);font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;text-decoration:none;transition:background 0.3s;}
+.avb-cta:hover{background:var(--gold-2);}
+.avb-note{font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;}
+
+/* PROTOCOLO CARD */
+.proto-card{background:white;border:1px solid var(--border);display:grid;grid-template-columns:1fr 240px;overflow:hidden;margin-bottom:3px;transition:box-shadow 0.3s;}
+.proto-card:hover{box-shadow:var(--shadow);}
+.proto-card.dark{background:var(--navy);border-color:rgba(181,137,42,0.3);}
+.proto-left{padding:44px 52px;}
+.proto-right{padding:40px 32px;border-left:1px solid var(--border);background:var(--cream);display:flex;flex-direction:column;justify-content:space-between;}
+.proto-card.dark .proto-right{border-left-color:rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);}
+
+.proto-badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:0.38em;text-transform:uppercase;padding:5px 14px;margin-bottom:16px;}
+.proto-badge.teal{background:var(--teal-wash);color:var(--teal);}
+.proto-badge.light{background:rgba(255,255,255,0.08);color:var(--teal-light);}
+
+.proto-name{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:var(--navy);margin-bottom:6px;}
+.proto-card.dark .proto-name{color:white;}
+.proto-tagline{font-size:10px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;}
+.proto-card.dark .proto-tagline{color:var(--teal-light);}
+.proto-pitch{font-size:14px;line-height:1.85;color:var(--text-mid);border-left:3px solid var(--teal-pale);padding-left:18px;margin-bottom:24px;font-style:italic;}
+.proto-card.dark .proto-pitch{color:rgba(255,255,255,0.55);border-left-color:var(--teal);}
+.proto-symptoms{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.proto-symptoms li{font-size:13px;color:var(--text-mid);padding-left:18px;position:relative;line-height:1.5;}
+.proto-symptoms li::before{content:'·';position:absolute;left:0;color:var(--teal);font-size:20px;line-height:0.85;top:2px;}
+.proto-card.dark .proto-symptoms li{color:rgba(255,255,255,0.6);}
+.proto-card.dark .proto-symptoms li::before{color:var(--teal-light);}
+
+.proto-from{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+.proto-card.dark .proto-from{color:var(--teal-light);}
+.proto-price-val{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;line-height:1;color:var(--teal);margin-bottom:4px;}
+.proto-card.dark .proto-price-val{color:white;}
+.proto-price-note{font-size:11px;color:var(--text-soft);margin-bottom:20px;}
+.proto-card.dark .proto-price-note{color:rgba(255,255,255,0.3);}
+.proto-cta{display:block;width:100%;padding:14px;background:var(--navy);color:white;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.3s;}
+.proto-cta:hover{background:var(--teal);}
+.proto-card.dark .proto-cta{background:var(--gold);color:var(--navy);}
+.proto-card.dark .proto-cta:hover{background:var(--gold-2);}
+
+/* ÉSTERES */
+.ester-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:3px;}
+.ester-card{background:white;padding:32px 36px;border:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;transition:box-shadow 0.3s,transform 0.2s;position:relative;overflow:hidden;}
+.ester-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);z-index:2;}
+.ester-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal-pale);transition:background 0.3s;}
+.ester-card:hover::before{background:var(--teal);}
+.ester-card.dark{background:var(--navy);border-color:rgba(181,137,42,0.3);}
+.ester-card.dark::before{background:var(--gold);}
+
+.ester-badge{font-size:8px;font-weight:600;letter-spacing:0.38em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:6px;}
+.ester-card.dark .ester-badge{color:var(--gold-2);}
+.ester-name{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--navy);margin-bottom:4px;}
+.ester-card.dark .ester-name{color:white;}
+.ester-dose{font-size:11px;color:var(--text-soft);letter-spacing:0.1em;}
+.ester-card.dark .ester-dose{color:rgba(255,255,255,0.35);}
+.ester-desc{font-size:12px;color:var(--text-mid);max-width:320px;line-height:1.6;margin-top:8px;}
+.ester-card.dark .ester-desc{color:rgba(255,255,255,0.5);}
+.ester-price-wrap{text-align:right;flex-shrink:0;margin-left:24px;}
+.ester-price-val{font-family:'Playfair Display',serif;font-size:34px;font-weight:400;color:var(--teal);line-height:1;}
+.ester-card.dark .ester-price-val{color:var(--teal-light);}
+.ester-price-note{font-size:10px;color:var(--text-soft);margin-top:2px;}
+.ester-card.dark .ester-price-note{color:rgba(255,255,255,0.3);}
+
+/* AVULSA */
+.avulsa-card{background:var(--cream);border:1px solid var(--border);padding:44px 52px;display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:center;}
+.avulsa-title{font-family:'Playfair Display',serif;font-size:26px;font-weight:400;color:var(--navy);margin-bottom:8px;}
+.avulsa-desc{font-size:14px;color:var(--text-mid);line-height:1.85;max-width:520px;}
+.avulsa-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-top:20px;}
+.avulsa-items li{font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;}
+.avulsa-items li::before{content:'—';position:absolute;left:0;color:var(--teal);font-size:11px;top:1px;}
+.avulsa-price-side{text-align:center;}
+.avulsa-from{font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.avulsa-price-val{font-family:'Playfair Display',serif;font-size:44px;font-weight:400;color:var(--teal);line-height:1;}
+.avulsa-price-note{font-size:11px;color:var(--text-soft);margin-top:4px;margin-bottom:20px;}
+.avulsa-cta{display:block;width:100%;padding:14px;background:var(--navy);color:white;font-family:'Jost',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.35em;text-transform:uppercase;text-align:center;text-decoration:none;transition:background 0.3s;}
+.avulsa-cta:hover{background:var(--teal);}
+
+footer{background:var(--navy);padding:56px 80px;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;left:-80px;bottom:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(46,140,138,0.1) 0%,transparent 65%);pointer-events:none;}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.footer-logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;letter-spacing:0.22em;color:var(--cream);display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.footer-tagline{font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--teal-light);margin-bottom:16px;}
+
+@media(max-width:960px){
+  nav{padding:0 24px;}.nav-links{display:none;}
+  .page-hero{padding:100px 28px 60px;}
+  .legal-bar{padding:16px 28px;}
+  .section{padding:56px 28px;}
+  .av-bloco{grid-template-columns:1fr;padding:40px 28px;gap:32px;}
+  .proto-card{grid-template-columns:1fr;}
+  .proto-right{border-left:none;border-top:1px solid var(--border);}
+  .proto-card.dark .proto-right{border-top-color:rgba(255,255,255,0.08);}
+  .ester-grid{grid-template-columns:1fr;}
+  .ester-card{flex-direction:column;align-items:flex-start;gap:16px;}
+  .ester-price-wrap{text-align:left;margin-left:0;}
+  .avulsa-card{grid-template-columns:1fr;gap:28px;}
+  footer{padding:48px 28px;}.footer-inner{grid-template-columns:1fr;gap:28px;}
+}
+@keyframes waPulse{
+  0%,100%{box-shadow:0 4px 20px rgba(27,48,80,0.22);transform:translateY(0);}
+  50%{box-shadow:0 8px 28px rgba(27,48,80,0.32);transform:translateY(-3px);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 38 38" fill="none"><path d="M19 4 C19 4 23 13 19 19 C15 13 19 4 19 4Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M19 34 C19 34 23 25 19 19 C15 25 19 34 19 34Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M4 19 C4 19 13 23 19 19 C13 15 4 19 4 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M34 19 C34 19 25 23 19 19 C25 15 34 19 34 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><circle cx="19" cy="19" r="2.8" fill="#7FCFCC"/></svg>
+    <span class="nav-logo-name">NEXUS CLIN</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Início</a>
+    <a href="index.html#programas">Programas</a>
+    <a href="soroterapia.html">Soroterapia</a>
+    <a href="hormonal.html" class="active">Hormonal</a>
+    <a href="reposicoes.html">Reposições</a>
+    <a href="https://wa.me/5583999086787?text=Olá!%20Quero%20agendar%20minha%20avaliação%20hormonal%20na%20NEXUS%20CLIN." target="_blank" class="nav-cta">Agendar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>Reposição <em>Hormonal</em><br>Masculina & Feminina</h1>
+  <p>Avaliação clínica individualizada com análise laboratorial completa. Protocolos de Terapia de Reposição Hormonal conduzidos por enfermeiro especialista em parceria médica.</p>
+</div>
+
+<!-- AVISO LEGAL -->
+<div class="legal-bar reveal">
+  <span class="legal-bar-icon">⚖️</span>
+  <div class="legal-bar-text">
+    <strong>Supervisão Clínica & Respaldo Legal</strong>
+    Todos os protocolos hormonais da NEXUS CLIN são conduzidos mediante avaliação clínica prévia, análise laboratorial e prescrição médica vigente. A dispensação de ésteres hormonais ocorre exclusivamente sob receituário médico, conforme ANVISA RDC 204/2017 e Lei 9.787/1999. Aplicações realizadas por Enf. Sosthenes dos Santos Alves, COREN-PB 568176, em parceria com Dra. Karen Bianca Moreira da Silva, CRM-PB 0015149. O paciente é acompanhado clinicamente a cada aplicação, com monitoramento laboratorial periódico.
+  </div>
+</div>
+
+<!-- AVALIAÇÃO BLOCO -->
+<div class="av-bloco reveal">
+  <div>
+    <div class="avb-badge">Primeiro Passo</div>
+    <div class="avb-title">Avaliação Clínica &<br><em>Planejamento Hormonal</em></div>
+    <p class="avb-desc">Antes de qualquer protocolo, uma avaliação completa. Análise dos seus exames laboratoriais, sintomas, histórico clínico e objetivos. A partir daí, o protocolo mais adequado para o seu perfil.</p>
+    <ul class="avb-includes">
+      <li>Análise completa de exames laboratoriais</li>
+      <li>Avaliação clínica detalhada de sintomas</li>
+      <li>Planejamento terapêutico individualizado</li>
+      <li>Definição do éster e protocolo mais adequado</li>
+      <li>Disponível para homens e mulheres</li>
+    </ul>
+  </div>
+  <div class="avb-price-side">
+    <div class="avb-price-val">R$ 250</div>
+    <div class="avb-price-lbl">Avaliação completa</div>
+    <a href="https://wa.me/5583999086787?text=Olá!%20Quero%20agendar%20minha%20avaliação%20hormonal%20na%20NEXUS%20CLIN." target="_blank" class="avb-cta">Agendar avaliação</a>
+    <p class="avb-note">Masculina · Feminina · 40–60 min</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MASCULINO -->
+<section class="section white">
+  <div class="container">
+    <p class="s-label reveal">Reposição Masculina · 35+</p>
+    <h2 class="s-title reveal">Terapia Hormonal <em>Masculina</em></h2>
+
+    <div class="proto-card reveal">
+      <div class="proto-left">
+        <span class="proto-badge teal">Masculino · 35+ · IM</span>
+        <div class="proto-name">Se você já passou dos 35</div>
+        <div class="proto-tagline">Testosterona · Vitalidade · Performance</div>
+        <p class="proto-pitch">"Se você já passou dos 35 e está sentindo que o corpo mudou — cansaço que não passa, barriga que não sai, músculo que não volta, libido que caiu e aquela motivação que sumiu sem avisar — saiba que isso tem nome e tem solução. Não é frescura. Não é falta de força de vontade. É hormônio. E hormônio se trata."</p>
+        <ul class="proto-symptoms">
+          <li>Fadiga crônica mesmo dormindo bem</li>
+          <li>Queda de libido e desejo sexual reduzido</li>
+          <li>Perda de massa muscular sem motivo aparente</li>
+          <li>Acúmulo de gordura abdominal crescente</li>
+          <li>Irritabilidade, baixo humor ou falta de motivação</li>
+          <li>Queda de desempenho físico e sexual</li>
+          <li>Sensação de envelhecimento acelerado</li>
+        </ul>
+      </div>
+      <div class="proto-right">
+        <div>
+          <div class="proto-from">A partir de</div>
+          <div class="proto-price-val">R$ 135</div>
+          <p class="proto-price-note">Por aplicação · éster incluso</p>
+        </div>
+        <a href="https://wa.me/5583999086787?text=Olá!%20Tenho%20interesse%20na%20reposição%20hormonal%20masculina." target="_blank" class="proto-cta">Quero avaliar</a>
+      </div>
+    </div>
+
+    <div class="ester-grid">
+      <div class="ester-card reveal">
+        <div>
+          <span class="ester-badge">Entrada · Fisiológico</span>
+          <div class="ester-name">Testosterona Biomolecular</div>
+          <div class="ester-dose">100mg/ml · Intramuscular</div>
+          <p class="ester-desc">Reposição suave e fisiológica. Ideal para iniciar o protocolo ou para perfis que buscam reequilíbrio gradual sem picos.</p>
+        </div>
+        <div class="ester-price-wrap">
+          <div class="ester-price-val">R$ 135</div>
+          <p class="ester-price-note">Por aplicação</p>
+        </div>
+      </div>
+
+      <div class="ester-card reveal">
+        <div>
+          <span class="ester-badge">Depósito · Ação Prolongada</span>
+          <div class="ester-name">Cipionato de Testosterona</div>
+          <div class="ester-dose">200mg/2ml · Intramuscular</div>
+          <p class="ester-desc">Liberação lenta e sustentada. Menor frequência de aplicação com níveis hormonais estáveis por mais tempo.</p>
+        </div>
+        <div class="ester-price-wrap">
+          <div class="ester-price-val">R$ 140</div>
+          <p class="ester-price-note">Por aplicação</p>
+        </div>
+      </div>
+
+      <div class="ester-card reveal">
+        <div>
+          <span class="ester-badge">Anabólico · Suporte Articular</span>
+          <div class="ester-name">Nandrolona Decanoato</div>
+          <div class="ester-dose">50mg/ml · Intramuscular</div>
+          <p class="ester-desc">Suporte anabólico e proteção articular. Frequentemente associado à testosterona para potencializar ganhos e reduzir catabolismo.</p>
+        </div>
+        <div class="ester-price-wrap">
+          <div class="ester-price-val">R$ 135</div>
+          <p class="ester-price-note">Por aplicação</p>
+        </div>
+      </div>
+
+      <div class="ester-card reveal">
+        <div>
+          <span class="ester-badge">Protocolo Completo · Multi-éster</span>
+          <div class="ester-name">Blend Testosterona</div>
+          <div class="ester-dose">250mg/ml · Intramuscular</div>
+          <p class="ester-desc">Combinação de ésteres de ação rápida, intermediária e prolongada. Picos iniciais com sustentação de longa duração — o protocolo mais completo.</p>
+        </div>
+        <div class="ester-price-wrap">
+          <div class="ester-price-val">R$ 145</div>
+          <p class="ester-price-note">Por aplicação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FEMININO -->
+<section class="section cream">
+  <div class="container">
+    <p class="s-label reveal">Reposição Feminina · 40+</p>
+    <h2 class="s-title reveal">Terapia Hormonal <em>Feminina</em></h2>
+
+    <div class="proto-card dark reveal">
+      <div class="proto-left">
+        <span class="proto-badge light">Feminino · 40+ · IM</span>
+        <div class="proto-name">Se você já passou dos 40</div>
+        <div class="proto-tagline">Equilíbrio · Vitalidade · Bem-estar</div>
+        <p class="proto-pitch">"Se você já passou dos 40 e sente que algo mudou — noites mal dormidas, humor que oscila sem motivo, cabelo caindo, peso que não sai mesmo fazendo tudo certo, libido que sumiu e aquela sensação constante de cansaço e vazio — seu corpo está pedindo equilíbrio. A reposição hormonal feminina não é polêmica, não é perigosa e não é só para a menopausa. É ciência. É qualidade de vida. É você se sentindo você de novo."</p>
+        <ul class="proto-symptoms">
+          <li>Noites mal dormidas e insônia frequente</li>
+          <li>Humor que oscila sem motivo aparente</li>
+          <li>Queda de cabelo e pele sem viço</li>
+          <li>Peso que não sai mesmo com dieta e exercício</li>
+          <li>Libido reduzida e bem-estar sexual comprometido</li>
+          <li>Cansaço constante e falta de energia</li>
+          <li>Perda de massa magra e aumento de gordura corporal</li>
+        </ul>
+      </div>
+      <div class="proto-right">
+        <div>
+          <div class="proto-from">Por aplicação</div>
+          <div class="proto-price-val">R$ 135</div>
+          <p class="proto-price-note">Éster incluso</p>
+        </div>
+        <a href="https://wa.me/5583999086787?text=Olá!%20Tenho%20interesse%20na%20reposição%20hormonal%20feminina." target="_blank" class="proto-cta">Quero avaliar</a>
+      </div>
+    </div>
+
+    <div class="ester-grid" style="margin-top:3px;">
+      <div class="ester-card dark reveal" style="grid-column:1/-1;">
+        <div>
+          <span class="ester-badge">Feminino · Baixa Dose · Anabólico</span>
+          <div class="ester-name">Nandrolona Decanoato</div>
+          <div class="ester-dose">50mg/ml · Intramuscular</div>
+          <p class="ester-desc">Em baixas doses, a nandrolona é um dos ésteres mais seguros e eficazes para mulheres — restaura libido, preserva massa magra, melhora bem-estar geral e combate os efeitos do hipoestrogenismo sem os riscos da testosterona em dose alta.</p>
+        </div>
+        <div class="ester-price-wrap">
+          <div class="ester-price-val">R$ 135</div>
+          <p class="ester-price-note">Por aplicação</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- APLICAÇÃO AVULSA -->
+<section class="section white">
+  <div class="container">
+    <p class="s-label reveal">Já tem protocolo?</p>
+    <h2 class="s-title reveal">Aplicação <em>Hormonal Avulsa</em></h2>
+
+    <div class="avulsa-card reveal">
+      <div>
+        <div class="avulsa-title">Traga sua prescrição médica</div>
+        <p class="avulsa-desc">Independente de onde iniciou seu tratamento hormonal, continue o acompanhamento que merece. Traga sua prescrição e seu medicamento — nós cuidamos da aplicação com segurança, técnica e monitoramento clínico.</p>
+        <ul class="avulsa-items">
+          <li>Aplicação intramuscular segura e supervisionada</li>
+          <li>Monitoramento clínico a cada sessão</li>
+          <li>Atendimento personalizado e confidencial</li>
+          <li>Qualquer éster prescrito por médico habilitado</li>
+        </ul>
+      </div>
+      <div class="avulsa-price-side">
+        <div class="avulsa-price-val">R$ 50</div>
+        <p class="avulsa-price-note">Por aplicação · medicamento por conta do paciente mediante prescrição médica vigente</p>
+        <a href="https://wa.me/5583999086787?text=Olá!%20Quero%20fazer%20aplicação%20hormonal%20avulsa%20na%20NEXUS%20CLIN." target="_blank" class="avulsa-cta">Agendar aplicação</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <svg width="28" height="28" viewBox="0 0 38 38" fill="none"><path d="M19 4 C19 4 23 13 19 19 C15 13 19 4 19 4Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M19 34 C19 34 23 25 19 19 C15 25 19 34 19 34Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M4 19 C4 19 13 23 19 19 C13 15 4 19 4 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M34 19 C34 19 25 23 19 19 C25 15 34 19 34 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><circle cx="19" cy="19" r="2.8" fill="#7FCFCC"/></svg>
+        NEXUS CLIN
+      </div>
+      <p class="footer-tagline">Centro de Performance Metabólica & Longevidade</p>
+      <p style="font-size:11px;color:rgba(255,255,255,0.28);line-height:2;margin-bottom:8px;">Galeria El Shaddai · 1º Andar, Box 25<br>Rua Rita Pereira de Almeida, 22 · Centro<br>Livramento · PB · CEP 58.690-000</p>
+      <p style="font-size:10px;color:rgba(255,255,255,0.16);letter-spacing:0.12em;">CNPJ 59.792.088/0001-74 · Enf. Sosthenes dos Santos Alves · COREN-PB 568176</p>
+    </div>
+    <div>
+      <p style="font-size:11px;color:rgba(255,255,255,0.22);line-height:1.85;">Os protocolos hormonais são realizados sob orientação de profissional habilitado, mediante avaliação clínica e análise laboratorial. Indicação e prescrição em parceria com Dra. Karen Bianca Moreira da Silva, CRM-PB 0015149. Conforme ANVISA RDC 204/2017 e Lei 9.787/1999.</p>
+      <a href="index.html" style="display:inline-block;margin-top:20px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--teal-light);text-decoration:none;border-bottom:1px solid rgba(127,207,204,0.3);padding-bottom:2px;">← Voltar ao início</a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5583999086787?text=Olá!%20Vim%20pela%20página%20hormonal%20da%20NEXUS%20CLIN." target="_blank" rel="noopener noreferrer" id="waBtn" style="position:fixed;bottom:28px;right:28px;z-index:9999;text-decoration:none;display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+  <div style="background:var(--navy);color:var(--cream);font-family:'Jost',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.06em;padding:10px 18px;border-radius:10px;white-space:nowrap;border-left:3px solid #25D366;box-shadow:0 4px 20px rgba(27,48,80,0.22);animation:waPulse 3s ease-in-out infinite;">Agendar avaliação 💬</div>
+  <div style="background:#25D366;border-radius:50%;width:58px;height:58px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.4);">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </div>
+</a>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const btn=document.getElementById('waBtn');
+if(btn){btn.addEventListener('mouseenter',()=>btn.querySelector('div:last-child').style.transform='scale(1.08)');btn.addEventListener('mouseleave',()=>btn.querySelector('div:last-child').style.transform='scale(1)');}
+</script>
+</body>
+</html>
