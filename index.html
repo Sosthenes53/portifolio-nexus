@@ -28,8 +28,7 @@
   ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:2px;}
 
   /* ── PAGES ── */
-  .page{display:none;}
-  .page.active{display:block;}
+  .page{display:block;}
 
     /* ── SECTIONS COMMONS ── */
   section{padding:6rem 2rem;}
@@ -1159,10 +1158,7 @@
 <script>
   // Page system
   function showPage(id){
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    window.scrollTo(0,0);
-    document.getElementById('mobileMenu').classList.remove('open');
+    // Tabs removed - content is now continuous scroll
   }
 
   // Scroll to section in main page
