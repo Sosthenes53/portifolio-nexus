@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
+  :root {h
     --navy: #0B1F3A;
     --navy-light: #112848;
     --gold: #C9A84C;
@@ -317,20 +317,19 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <a class="nav-logo" onclick="showPage('main')">NEXUS<span> CLIN</span></a>
-  <ul class="nav-links">
-    <li><a onclick="showPage('main');scrollTo('#profissionais')">Equipe</a></li>
-    <li><a onclick="showPage('main');scrollTo('#servicos')">Serviços</a></li>
-    <li><a onclick="showPage('main');scrollTo('#programas')">Programas</a></li>
-    <li><a onclick="showPage('main');scrollTo('#reposicoes')">Reposições</a></li>
-    <li><a onclick="showPage('hormonal-page')">Hormonal</a></li>
-    <li><a href="https://wa.me/5583998585691" target="_blank" class="nav-cta">Agendar</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<!-- NAV FIXO -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(27,48,80,0.97);backdrop-filter:blur(12px);padding:0 80px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(46,140,138,0.2);">
+  <a href="index.html" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+    <svg width="28" height="28" viewBox="0 0 38 38" fill="none"><path d="M19 4 C19 4 23 13 19 19 C15 13 19 4 19 4Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M19 34 C19 34 23 25 19 19 C15 25 19 34 19 34Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M4 19 C4 19 13 23 19 19 C13 15 4 19 4 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><path d="M34 19 C34 19 25 23 19 19 C25 15 34 19 34 19Z" stroke="#7FCFCC" stroke-width="1.9" fill="none" stroke-linecap="round"/><circle cx="19" cy="19" r="2.8" fill="#7FCFCC"/></svg>
+    <span style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;letter-spacing:0.18em;color:#F3EDE2;">NEXUS CLIN</span>
+  </a>
+  <div style="display:flex;gap:28px;align-items:center;">
+    <a href="#programas" style="font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.5);text-decoration:none;">Programas</a>
+    <a href="soroterapia.html" style="font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;">Soroterapia</a>
+    <a href="reposicoes.html" style="font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;">Reposições</a>
+    <a href="hormonal.html" style="font-size:10px;font-weight:500;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.35);text-decoration:none;">Hormonal</a>
+    <a href="https://wa.me/5583999086787?text=Olá!%20Quero%20agendar%20minha%20avaliação%20na%20NEXUS%20CLIN." target="_blank" style="font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:white;text-decoration:none;background:#2E8C8A;padding:8px 20px;">Agendar</a>
+  </div>
 </nav>
 
 <!-- MOBILE MENU -->
@@ -347,7 +346,7 @@
 <div id="main" class="page active">
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" style="padding-top:64px;">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-content">
